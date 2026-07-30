@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ============================================================
    SVENDBORG TRIATHLON KLUB — style.css
    Farver: rød · hvid · sort
@@ -703,4 +704,711 @@ color: white;
   .hero h1 { font-size: 5rem; }
   .home-section { padding: 4rem 1.25rem; }
   .steps { grid-template-columns: 1fr; }
+=======
+/* ============================================================
+   SVENDBORG TRIATHLON KLUB — style.css
+   Farver: rød · hvid · sort
+   Font: Bebas Neue (display) + Bricolage Grotesque (body)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bricolage+Grotesque:wght@300;400;500;600&display=swap');
+
+/* ── RESET & ROOT ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red:        #cc1a1a;
+  --red-dark:   #a01212;
+  --black:      #0d0d0d;
+  --white:      #ffffff;
+  --off-white:  #f7f5f2;
+  --grey:       #8a8a8a;
+  --border:     rgba(255,255,255,0.12);
+  --border-dark:rgba(0,0,0,0.1);
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'Bricolage Grotesque', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--black);
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 72px;
+  transition: background 0.35s, box-shadow 0.35s;
+}
+
+#navbar.scrolled {
+  background: var(--black);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+.nav-logo img {
+  height: 56px;
+  max-height: 100%;
+  padding: 10px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 0;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0 1.2rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--white);
+  border-bottom-color: var(--red);
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Fallback baggrund hvis video ikke er tilgængelig */
+.hero-fallback {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, #1a1a1a 0%, #0d0d0d 60%, #1c0505 100%);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.82) 0%,
+    rgba(0,0,0,0.35) 50%,
+    rgba(0,0,0,0.15) 100%
+  );
+}
+
+/* Rød diagonal accent */
+.hero-accent {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 6px;
+  height: 45%;
+  background: var(--red);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.45);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: rgba(255,255,255,0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--red);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+  0%   { top: -100%; }
+  100% { top: 100%; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 2.5rem 5rem;
+  max-width: 900px;
+}
+
+.hero-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--red);
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 12vw, 11rem);
+  line-height: 0.92;
+  color: var(--white);
+  letter-spacing: 0.01em;
+  margin-bottom: 1.75rem;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--red);
+}
+
+.hero-lead {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.68);
+  max-width: 520px;
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 13px 26px;
+  border-radius: 2px;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+.btn-primary svg { width: 14px; height: 14px; }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.75);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.btn-ghost:hover { color: var(--white); border-color: var(--white); }
+
+/* ── REVEAL ANIMATION ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── SECTION WRAPPER ── */
+.home-section {
+  padding: 6rem 2.5rem;
+  background: var(--white);
+}
+
+.home-section.alt {
+  background: var(--off-white);
+}
+
+.home-section.dark {
+  background: var(--black);
+}
+
+.home-section-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* ── SECTION HEADER ── */
+.home-section-header {
+  max-width: 680px;
+  margin-bottom: 3.5rem;
+}
+
+.label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.label::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--red);
+}
+
+.home-section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  color: var(--black);
+  margin-bottom: 1.25rem;
+}
+
+.dark .home-section-header h2 { color: var(--white); }
+
+.home-section-header p {
+  font-size: 1rem;
+  color: #555;
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.dark .home-section-header p { color: rgba(255,255,255,0.6); }
+
+/* ── DISCIPLINE GRID (3 kort) ── */
+.disc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 3rem;
+}
+
+.disc-card {
+  background: var(--white);
+  padding: 2.5rem 2rem;
+  transition: background 0.25s;
+  cursor: default;
+}
+
+.disc-card:hover { background: #fafafa; }
+
+.disc-number {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  line-height: 1;
+  color: rgba(0,0,0,0.06);
+  margin-bottom: 0.75rem;
+  transition: color 0.25s;
+}
+
+.disc-card:hover .disc-number { color: rgba(204,26,26,0.12); }
+
+.disc-icon {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.disc-name {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 0.02em;
+  color: var(--black);
+  margin-bottom: 0.6rem;
+}
+
+.disc-desc {
+  font-size: 0.88rem;
+  color: #666;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── TRÆNINGSTIDER TABLE SECTION ── */
+.training-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.training-block {
+  margin-bottom: 2.5rem;
+}
+
+.training-block-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+  color: var(--black);
+  border-bottom: 2px solid var(--black);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.time-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.time-table tr {
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.time-table tr:last-child { border-bottom: none; }
+
+.time-table td {
+  padding: 0.65rem 0;
+  vertical-align: top;
+}
+
+.time-table td:first-child {
+  font-weight: 600;
+  width: 120px;
+  color: var(--black);
+}
+
+.time-table td:last-child {
+  color: #555;
+  font-weight: 300;
+}
+
+.training-note {
+  font-size: 0.82rem;
+  color: #777;
+  margin-top: 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--red);
+  line-height: 1.6;
+}
+
+.fb-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--red);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-top: 0.75rem;
+  border-bottom: 1px solid rgba(204,26,26,0.3);
+  padding-bottom: 1px;
+  transition: border-color 0.2s;
+}
+
+.fb-link:hover { border-color: var(--red); }
+
+/* ── MEMBERSHIP SECTION ── */
+.membership-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.membership-card {
+  border: 1px solid var(--border-dark);
+  padding: 2.25rem 2rem;
+  border-radius: 3px;
+  position: relative;
+  background: var(--white);
+}
+
+.membership-card.featured {
+  border-color: var(--red);
+  border-width: 2px;
+}
+
+.membership-card.featured::before {
+  content: 'Mest valgt';
+  position: absolute;
+  top: -12px; left: 1.75rem;
+  background: var(--red);
+  color: white;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+
+.membership-price {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 1;
+  color: var(--black);
+  letter-spacing: -0.01em;
+}
+
+.membership-price sup {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 300;
+  vertical-align: top;
+  margin-top: 0.8rem;
+  display: inline-block;
+}
+
+.membership-period {
+  font-size: 0.8rem;
+  color: var(--grey);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  margin-top: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.membership-features {
+  list-style: none;
+  margin-bottom: 1.75rem;
+}
+
+.membership-features li {
+  font-size: 0.88rem;
+  color: #444;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border-dark);
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  font-weight: 300;
+}
+
+.membership-features li::before {
+  content: '—';
+  color: var(--red);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Trin-for-trin */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--border-dark);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.step {
+  padding: 2rem 1.5rem;
+  border-right: 1px solid var(--border-dark);
+  background: var(--white);
+  transition: background 0.2s;
+}
+
+.step:last-child { border-right: none; }
+.step:hover { background: #fafafa; }
+
+.step-num {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 1;
+  color: rgba(0,0,0,0.07);
+  margin-bottom: 0.75rem;
+}
+
+.step strong {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 0.35rem;
+}
+
+.step p {
+  font-size: 0.82rem;
+  color: #666;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.step a { color: var(--red); text-decoration: none; }
+.step a:hover { text-decoration: underline; }
+
+/* ── DARK SECTION (hvad er triatlon) ── */
+.dark .label { color: var(--red); }
+.dark .label::before { background: var(--red); }
+.dark .disc-card { background: #141414; }
+.dark .disc-card:hover { background: #1a1a1a; }
+.dark .disc-name { color: var(--white); }
+.dark .disc-desc { color: rgba(255,255,255,0.45); }
+.dark .disc-number { color: rgba(255,255,255,0.04); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black);
+  color: rgba(255,255,255,0.4);
+  padding: 3rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.82rem;
+  border-top: 2px solid var(--red);
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.footer-links a {
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--white); }
+
+.footer-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+}
+
+.footer-fb {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: color 0.2s;
+}
+
+.footer-fb:hover { color: white; }
+
+.sonderbymarketing-span {
+  text-align: center;
+color: white;
+}
+
+.sonderbymarketing {
+  text-align: center;
+  background: #000000;
+}
+
+.sonderbymarketing a {
+color: white;
+}
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .disc-grid { grid-template-columns: 1fr; }
+  .training-cols { grid-template-columns: 1fr; gap: 1.5rem; }
+  .membership-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .step { border-bottom: 1px solid var(--border-dark); }
+
+  footer { flex-direction: column; align-items: flex-start; }
+  .footer-meta { align-items: flex-start; }
+}
+
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .hero h1 { font-size: 5rem; }
+  .home-section { padding: 4rem 1.25rem; }
+  .steps { grid-template-columns: 1fr; }
+>>>>>>> 8421e81 (Initial upload)
 }
