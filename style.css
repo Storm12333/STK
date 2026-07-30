@@ -627,7 +627,7 @@ footer {
   flex-wrap: wrap;
   gap: 1rem;
   font-size: 0.82rem;
-  border-top: 2px solid var(--red);
+  border-top: 3px solid var(--red);
 }
 
 .footer-logo {
